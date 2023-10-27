@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBM Monu</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body class="body-pattern-1">
+    <div id="confetti"></div>
+    <div id="glass">
+
+        <div id="hbd-text-block">
+            <p id="hbd-text">Happy B'Day Monu</p>
+        </div>
+        <div id="image" style="    background: url('resource/rm-1.jpg'); background-repeat: no-repeat; background-size: cover;">
+            <!-- <img src="resource/rm-1.png" alt="Monu's Photo" id="ppl"> -->
+            <div id="pic-btn-grp">
+                <button  id="pic-controls-btn" type="submit" onclick="prevPic()">
+                    <span class="material-symbols-outlined">
+                        navigate_before
+                        </span>
+                </button>
+                <button id="pic-controls-btn" type="submit" onclick="nextPic()">
+                    <span class="material-symbols-outlined">
+                        navigate_next
+                        </span>
+                </button>
+            </div>
+        </div>
+        <img src="resource/scode-2.png" id="spotify-code"></img>
+        <div id="player-control">
+
+            <button id="controls-btn" type="submit"  onclick="prevSong()">
+                <span class="material-symbols-rounded" >
+                    skip_previous
+                </span>
+            </button>
+
+            <button id="controls-btn" type="submit"  onclick="playPause()">
+            <span class="material-symbols-rounded" id="play-pause-btn">play_arrow</span>
+            </button>
+            <!-- <span class="material-symbols-rounded">
+                pause
+                </span> -->
+
+            <button id="controls-btn" type="submit"  onclick="nextSong()">
+            <span class="material-symbols-rounded" >
+                skip_next
+            </span>
+            </button>
+
+            <button id="theme-suffle-btn" onclick="shuffleTheme()">
+                <span class="material-symbols-outlined">
+                    shuffle
+                    </span>
+            </button>
+            <audio id="audio" src="resource/hbd-song-1.mp3" >
+                <source id="a-source" src="resource/hbd-song-1.mp3" type="audio/mp3">
+                <!-- <source src="resource/hbd-song-2.mp3" type="audio/mp3"> -->
+
+            </audio>
+        </div>
+    </div>
+</body>
+
+</html>
