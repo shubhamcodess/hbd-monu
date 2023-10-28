@@ -351,7 +351,7 @@ $(document).ready(function() {
 // ------------------
 
 
-const songsLength = 9
+const songsLength = 11
 
 
 
