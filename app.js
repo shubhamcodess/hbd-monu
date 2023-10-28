@@ -385,7 +385,12 @@ function pause(){
 function getCurrSongSrcIdx(){
     var audio = document.getElementById("audio");
     let currSrcIdx = audio.src
-    currSrcIdx = currSrcIdx.substring(currSrcIdx.length - 5, currSrcIdx.length-4)
+    // currSrcIdx = currSrcIdx.substring(currSrcIdx.length - 5, currSrcIdx.length-4)
+    const subWord = 'hbd-song-'
+    currSrcIdx = currSrcIdx.slice(currSrcIdx.indexOf(subWord)+subWord.length)
+    console.log('currSrcIdx in  getCurrSongSrcIdx() before', currSrcIdx);
+    currSrcIdx = currSrcIdx.replace('.mp3',"")
+    console.log('currSrcIdx in  getCurrSongSrcIdx()', currSrcIdx);
     return currSrcIdx;
 }
 
@@ -400,8 +405,11 @@ function getNextSongSrcIdx(curIdx,ops){
     }
         else nextSongSrcIdx = Number(curIdx) -1  ;
     
-    if(nextSongSrcIdx >= songsLength || nextSongSrcIdx <= 0){
-        nextSongSrcIdx = Number(curIdx) % Number(songsLength) + 1;}
+    if(nextSongSrcIdx > songsLength ){
+        nextSongSrcIdx = Number(nextSongSrcIdx) % Number(songsLength) ;}
+        else if(nextSongSrcIdx <= 0){
+            nextSongSrcIdx = Number(nextSongSrcIdx) % Number(songsLength) + 1;
+        }
 return nextSongSrcIdx;
 }
 
