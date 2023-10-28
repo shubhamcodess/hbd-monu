@@ -351,7 +351,7 @@ $(document).ready(function() {
 // ------------------
 
 
-const songs = ["hbd-song-1", "hbd-song-2"];
+const songsLength = 8
 
 
 
@@ -381,11 +381,42 @@ function pause(){
     // audio.pause();
 }
 
+
+function getCurrSongSrcIdx(){
+    var audio = document.getElementById("audio");
+    let currSrcIdx = audio.src
+    currSrcIdx = currSrcIdx.substring(currSrcIdx.length - 5, currSrcIdx.length-4)
+    return currSrcIdx;
+}
+
+function getNextSongSrcIdx(curIdx,ops){
+
+    let nextSongSrcIdx;
+
+    console.log('curIdx got', curIdx);
+    console.log('ops got', ops);
+        if(ops === 'next'){
+        nextSongSrcIdx = Number(curIdx) + 1
+    }
+        else nextSongSrcIdx = Number(curIdx) -1  ;
+    
+    if(nextSongSrcIdx >= songsLength || nextSongSrcIdx <= 0){
+        nextSongSrcIdx = Number(curIdx) % Number(songsLength) + 1;}
+return nextSongSrcIdx;
+}
+
+function getNextSongSrc(idx){
+    return './resource/hbd-song-'+idx+'.mp3';
+}
+
 function nextSong(){
     var playPauseBtn = document.getElementById("play-pause-btn");
+    let currSrcIdx = this.getCurrSongSrcIdx()
+    console.log('currSrcIdx', currSrcIdx);
+    let nextSongSrcIdx = this.getNextSongSrcIdx(currSrcIdx, 'next')
+    console.log('nextSongSrcIdx', nextSongSrcIdx)
     playPauseBtn.innerHTML = "play_arrow";
-
-    audio.src = `./resource/hbd-song-2.mp3`;
+    audio.src = this.getNextSongSrc(nextSongSrcIdx)
 
     playPause()
 }
@@ -393,7 +424,14 @@ function nextSong(){
 function prevSong(){
     var playPauseBtn = document.getElementById("play-pause-btn");
     playPauseBtn.innerHTML = "play_arrow";
-    audio.src = `./resource/hbd-song-1.mp3`;
+
+        let currSrcIdx = this.getCurrSongSrcIdx()
+    console.log('currSrcIdx', currSrcIdx);
+    let nextSongSrcIdx = this.getNextSongSrcIdx(currSrcIdx, 'prev')
+    console.log('nextSongSrcIdx', nextSongSrcIdx)
+
+    audio.src = this.getNextSongSrc(nextSongSrcIdx)
+
     playPause()
 
 }
